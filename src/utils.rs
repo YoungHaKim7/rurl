@@ -21,10 +21,11 @@ pub fn is_supported_http_method(method: &Method) -> bool {
 }
 
 pub fn is_valid_url(url: &str) -> bool {
-    match Url::parse(url) {
-        Ok(_) => true,
-        Err(_) => false,
-    }
+    Url::parse(url).is_ok()
+    //match Url::parse(url) {
+    //    Ok(_) => true,
+    //    Err(_) => false,
+    //}
 }
 
 pub fn str_to_reqwest_method(method: &str) -> Method {
