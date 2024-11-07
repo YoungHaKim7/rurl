@@ -10,11 +10,14 @@ pub fn can_send_body(method: &Method) -> bool {
 }
 
 pub fn is_supported_http_method(method: &Method) -> bool {
-    // matches!(*method, Method::POST | Method::PUT | Method::PATCH)
-    match *method {
-        Method::GET | Method::POST | Method::PUT | Method::PATCH | Method::DELETE => true,
-        _ => false,
-    }
+    matches!(
+        *method,
+        Method::GET | Method::POST | Method::PUT | Method::PATCH | Method::DELETE
+    )
+    //match *method {
+    //    Method::GET | Method::POST | Method::PUT | Method::PATCH | Method::DELETE => true,
+    //    _ => false,
+    //}
 }
 
 pub fn is_valid_url(url: &str) -> bool {
