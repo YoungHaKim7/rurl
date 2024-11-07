@@ -18,7 +18,7 @@ pub async fn format_http_response(response: Response) -> String {
     let http_version = reqwest_http_ver_to_str(&reqwest_http_version);
     let status_code = response.status().as_u16();
     let http_status =
-        StatusCode::from_u16(status_code.clone()).unwrap_or(StatusCode::INTERNAL_SERVER_ERROR);
+        StatusCode::from_u16(status_code).unwrap_or(StatusCode::INTERNAL_SERVER_ERROR);
     let status_message = http_status.canonical_reason().unwrap_or("Unkown Status");
     let headers = response.headers().clone();
     let content_type = match headers.get("Content-Type") {

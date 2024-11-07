@@ -1,7 +1,7 @@
 use reqwest::{Client, Method, Response, Result};
 use url::Url;
 
-pub async fn send_request(url: &String, method: &Method, body: &String) -> Result<Response> {
+pub async fn send_request(url: &str, method: &Method, body: &str) -> Result<Response> {
     let client = Client::new();
 
     let response = client
@@ -9,7 +9,7 @@ pub async fn send_request(url: &String, method: &Method, body: &String) -> Resul
             method.clone(),
             Url::parse(url).expect("Failed to parse URL"),
         )
-        .body(body.clone())
+        .body(body.to_owned())
         .send()
         .await?;
 

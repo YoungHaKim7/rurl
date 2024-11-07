@@ -2,13 +2,15 @@ use reqwest::{Method, Version};
 use url::Url;
 
 pub fn can_send_body(method: &Method) -> bool {
-    match *method {
-        Method::POST | Method::PUT | Method::PATCH => true,
-        _ => false,
-    }
+    matches!(*method, Method::POST | Method::PUT | Method::PATCH)
+    //match *method {
+    //    Method::POST | Method::PUT | Method::PATCH => true,
+    //    _ => false,
+    //}
 }
 
 pub fn is_supported_http_method(method: &Method) -> bool {
+    // matches!(*method, Method::POST | Method::PUT | Method::PATCH)
     match *method {
         Method::GET | Method::POST | Method::PUT | Method::PATCH | Method::DELETE => true,
         _ => false,
